@@ -1,0 +1,32 @@
+[1mdiff --git a/src/components/Article.tsx b/src/components/Article.tsx[m
+[1mindex dc8b9e3..2e6ba83 100644[m
+[1m--- a/src/components/Article.tsx[m
+[1m+++ b/src/components/Article.tsx[m
+[36m@@ -24,16 +24,20 @@[m [mconst Article=()=>{[m
+   const [inputItioshi, setInputItioshi] = useState("")[m
+   const [inputDesc, setInputDesc] = useState("")[m
+ [m
+[31m-  const handleInputChange = (e,setWords) => {[m
+[31m-    setWords(e.target.value)[m
+[31m-  }[m
+ [m
+   return ([m
+     <form className={classes.form} noValidate autoComplete="off">[m
+[31m-      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" />[m
+[31m-      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名" />[m
+[31m-      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント" />[m
+[31m-      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明" variant="outlined" />[m
+[32m+[m[32m      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名"[m[41m [m
+[32m+[m[32m      value={inputArtist} onChange={e=>setInputArtist(e.target.value)}/>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名"[m[41m [m
+[32m+[m[32m      value={inputSong} onChange={e=>setInputSong(e.target.value)} />[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント"[m[41m[m
+[32m+[m[32m      value={inputItioshi} onChange={e=>setInputItioshi(e.target.value)} />[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明"  variant="outlined"[m[41m [m
+[32m+[m[32m      value={inputDesc} onChange={e=>setInputDesc(e.target.value)} />[m[41m[m
+     </form>[m
+   );[m
+ }[m

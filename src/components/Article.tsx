@@ -24,16 +24,20 @@ const Article=()=>{
   const [inputItioshi, setInputItioshi] = useState("")
   const [inputDesc, setInputDesc] = useState("")
 
-  const handleInputChange = (e,setWords) => {
-    setWords(e.target.value)
-  }
 
   return (
     <form className={classes.form} noValidate autoComplete="off">
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" />
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名" />
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント" />
-      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明" variant="outlined" />
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" 
+      value={inputArtist} onChange={e=>setInputArtist(e.target.value)}/>
+
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名" 
+      value={inputSong} onChange={e=>setInputSong(e.target.value)} />
+
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント"
+      value={inputItioshi} onChange={e=>setInputItioshi(e.target.value)} />
+
+      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明"  variant="outlined" 
+      value={inputDesc} onChange={e=>setInputDesc(e.target.value)} />
     </form>
   );
 }
