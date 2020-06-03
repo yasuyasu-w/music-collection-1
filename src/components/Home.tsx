@@ -1,6 +1,9 @@
 import React from "react";
 import DenseAppBar from "./Home-material/DenseAppBar";
-import AddButton from './Home-material/AddButton'
+import Main from './Main'
+import Article from './Article'
+import { Route, Switch } from "react-router-dom";
+
 
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
@@ -22,7 +25,15 @@ const Home = () => {
     <>
       <div className={classes.root}>
         <DenseAppBar />
-        <AddButton />
+
+        <Switch>
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <Route path="/article">
+          <Article />
+        </Route>
+        </Switch>
       </div>
    </>
   );
