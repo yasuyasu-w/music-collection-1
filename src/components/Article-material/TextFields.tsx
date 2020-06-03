@@ -4,6 +4,14 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(() =>
   createStyles({
+    form:{
+      marginTop:'5%',
+      marginLeft:'20%',
+      marginRight:'20%'
+    },
+    textField:{
+      marginBottom:'10%',
+    }
   }),
 );
 
@@ -11,11 +19,11 @@ export default function TextFields() {
   const classes = useStyles();
 
   return (
-    <form  noValidate autoComplete="off">
-      <TextField id="standard-basic" label="アーティスト名" />
-      <TextField id="standard-basic" label="曲名" />
-      <TextField id="standard-basic" label="イチオシポイント" />
-      <TextField id="outlined-basic" label="説明" variant="outlined" />
+    <form className={classes.form} noValidate autoComplete="off">
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" />
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名" />
+      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント" />
+      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明" variant="outlined" />
     </form>
   );
 }

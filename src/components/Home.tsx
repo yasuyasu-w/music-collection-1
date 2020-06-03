@@ -10,7 +10,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      height:'100vh',
+      minHeight: '100vh',
       backgroundColor: "#1C2022",
       color: "#E84E72",
       position:'relative'
