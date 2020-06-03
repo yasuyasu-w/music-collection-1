@@ -31,7 +31,7 @@ const Home = ({state,dispatch}) => {
           <Main state={state} dispatch={dispatch} />
         </Route>
         <Route path="/article/:id">
-          <Article />
+          <Article state={state} dispatch={dispatch} />
         </Route>
         </Switch>
       </div>

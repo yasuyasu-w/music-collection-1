@@ -3,6 +3,7 @@ import AddButton from './Main-material/AddButton'
 import Content from './Main-material/Content'
 import DeleteButton from './Main-material/DeleteButton'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 
 
@@ -17,6 +18,7 @@ const useStyles = makeStyles(() =>
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
+        marginBottom:'20px'
        
     },
   }),
@@ -24,6 +26,12 @@ const useStyles = makeStyles(() =>
 
 const Main=({state,dispatch})=>{
     const classes = useStyles();
+    const history = useHistory();
+
+  const NewMakeContent=()=>{
+    const newId=state.length
+    history.push(`/article/${newId}`)
+  }
     
 
     return(
@@ -32,13 +40,13 @@ const Main=({state,dispatch})=>{
         {state.map((value,index)=>{return(
 
         <div key={index} className={classes.array}>
-        <Content id={value.id} time={value.time} />
-        <DeleteButton  />
+        <Content ArtistName={value.ArtistName} time={value.time} />
+        <DeleteButton   />
         </div>
 
         )})}
 
-        <AddButton state={state}  />
+        <AddButton  NewMakeContent={NewMakeContent} />
         </div>
        
     )

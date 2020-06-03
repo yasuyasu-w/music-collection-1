@@ -11,10 +11,10 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-export default function AddButton() {
+export default function AddButton({AddNewContent}) {
     const classes = useStyles();
   
     return (
-        <Button variant="contained" className={classes.add}>追加</Button>
+        <Button variant="contained" className={classes.add} onClick={AddNewContent} >追加</Button>
     );
   }

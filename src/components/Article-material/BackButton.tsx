@@ -11,10 +11,10 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-export default function BackButton() {
+export default function BackButton({GoBack}) {
     const classes = useStyles();
   
     return (
-        <Button variant="contained" className={classes.back}>戻る</Button>
+        <Button variant="contained" className={classes.back} onClick={GoBack}>戻る</Button>
     );
   }
