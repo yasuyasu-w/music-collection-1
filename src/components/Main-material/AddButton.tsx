@@ -19,7 +19,7 @@ const useStyles = makeStyles(() =>
 export default function AddButton(){
   const classes = useStyles();
     return (
-        <Fab color="primary" aria-label="add" className={classes.addIcon}>
+        <Fab  aria-label="add" className={classes.addIcon}>
           <AddIcon />
         </Fab>
     )

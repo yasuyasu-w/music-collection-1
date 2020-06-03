@@ -2,6 +2,10 @@ import React,{ useState, useContext } from 'react';
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
+import AddButton from './Article-material/AddButton'
+import BackButton from './Article-material/BackButton'
+
+
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -12,6 +16,10 @@ const useStyles = makeStyles(() =>
     },
     textField:{
       marginBottom:'10%',
+    },
+    ButtonPlace:{
+      display:'flex',
+      justifyContent:'space-between'
     }
   }),
 );
@@ -38,7 +46,15 @@ const Article=()=>{
 
       <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明"  variant="outlined" 
       value={inputDesc} onChange={e=>setInputDesc(e.target.value)} />
+
+      <div className={classes.ButtonPlace}>
+        <BackButton />
+        <AddButton />
+      </div>
     </form>
+
+
+   
   );
 }
 

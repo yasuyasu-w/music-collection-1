@@ -11,7 +11,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
       minHeight: '100vh',
-      backgroundColor: "#1C2022",
+     // backgroundColor: "#1C2022",
       color: "#E84E72",
       position:'relative'
     }
