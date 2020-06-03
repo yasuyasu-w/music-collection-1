@@ -1,14 +1,16 @@
 import React from "react";
-import DenseAppBar from "./Bar/DenseAppBar";
+import DenseAppBar from "./material-component/DenseAppBar";
+import AddButton from './material-component/AddButton'
 
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      width: "100%",
+      height:'100vh',
       backgroundColor: "#1C2022",
-      color: "#E84E72"
+      color: "#E84E72",
+      position:'relative'
     }
   })
 );
@@ -20,9 +22,9 @@ const Home = () => {
     <>
       <div className={classes.root}>
         <DenseAppBar />
-        <p>owivnwvnriovrebnvoirbevierbnvierv</p>
+        <AddButton />
       </div>
-    </>
+   </>
   );
 };
 
