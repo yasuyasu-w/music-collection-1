@@ -1,6 +1,6 @@
 import React from "react";
-import DenseAppBar from "./material-component/DenseAppBar";
-import AddButton from './material-component/AddButton'
+import DenseAppBar from "./Home-material/DenseAppBar";
+import AddButton from './Home-material/AddButton'
 
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
