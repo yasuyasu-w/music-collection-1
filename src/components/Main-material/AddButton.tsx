@@ -6,11 +6,11 @@ const useStyles = makeStyles(() =>
   createStyles({
     addIcon:{
       position: 'absolute',
-      right: '10%',
+      right: '10vw',
       backgroundColor:'black',
       color:'#E84E72',
       fontSize: '40px',
-      marginTop:'10px'
+      marginTop:'50px'
       
     }
   })
