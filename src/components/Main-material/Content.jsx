@@ -8,11 +8,14 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const Content=()=>{
+const Content=({id,time})=>{
     return(
         <Grid container  spacing={2}>
             <Grid item xs={11}>
-                <Paper > jioddffd</Paper>
+                <Paper>
+                    {id}
+                    {time}
+                </Paper>
             </Grid>
         </Grid>
     )

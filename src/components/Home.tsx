@@ -18,7 +18,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Home = () => {
+const Home = ({state,dispatch}) => {
   const classes = useStyles();
 
   return (
@@ -28,9 +28,9 @@ const Home = () => {
 
         <Switch>
         <Route exact path="/">
-          <Main />
+          <Main state={state} dispatch={dispatch} />
         </Route>
-        <Route path="/article">
+        <Route path="/article/:id">
           <Article />
         </Route>
         </Switch>

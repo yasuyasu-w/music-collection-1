@@ -4,6 +4,8 @@ import Content from './Main-material/Content'
 import DeleteButton from './Main-material/DeleteButton'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 
+
+
 const useStyles = makeStyles(() =>
   createStyles({
     root:{
@@ -20,15 +22,23 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const Main=()=>{
+const Main=({state,dispatch})=>{
     const classes = useStyles();
+    
+
     return(
         <div className={classes.root}>
-        <div className={classes.array}>
-        <Content />
-        <DeleteButton />
+
+        {state.map((value,index)=>{return(
+
+        <div key={index} className={classes.array}>
+        <Content id={value.id} time={value.time} />
+        <DeleteButton  />
         </div>
-        <AddButton />
+
+        )})}
+
+        <AddButton state={state}  />
         </div>
        
     )
