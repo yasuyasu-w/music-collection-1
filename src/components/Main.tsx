@@ -29,10 +29,16 @@ const Main=({state,dispatch})=>{
     const history = useHistory();
 
     const DeleteContent=(DelId)=>{
-      dispatch({
-        type:DELETE_INFO,
-        id:DelId
-      })
+      const result=window.confirm('本当に削除しますか')
+
+      if(result){
+        dispatch({
+          type:DELETE_INFO,
+          id:DelId
+        })
+      }else{
+        return;
+      }
     }
 
   const NewMakeContent=()=>{
