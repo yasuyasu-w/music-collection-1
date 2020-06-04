@@ -53,7 +53,11 @@ const Main=({state,dispatch})=>{
         {state.map((value,index)=>{return(
 
         <div key={index} className={classes.array}>
-        <Content ArtistName={value.ArtistName} time={value.time} ArtistImage={value.ArtistImage} />
+
+        <Content ArtistName={value.ArtistName} SongName={value.SongName} 
+                 ArtistImage={value.ArtistImage} iPoint={value.iPoint} 
+                 time={value.time}  />
+
         <DeleteButton DeleteContent={DeleteContent} id={value.id} />
         </div>
 
