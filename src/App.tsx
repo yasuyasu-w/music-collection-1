@@ -11,7 +11,7 @@ import { BrowserRouter as Router} from "react-router-dom";
 export default function App() {
 
   const [state,dispatch]=useReducer(reducers,initialState)
- // console.log(state)
+  console.log(state)
 
   return (
     <Router>

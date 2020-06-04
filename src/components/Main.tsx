@@ -54,8 +54,11 @@ const Main=({state,dispatch})=>{
 
         <div key={index} className={classes.array}>
 
-        <Content ArtistName={value.ArtistName} SongName={value.SongName} 
-                 ArtistImage={value.ArtistImage} iPoint={value.iPoint} 
+        <Content id={value.id}
+                 ArtistName={value.ArtistName} 
+                 SongName={value.SongName} 
+                 ArtistImage={value.ArtistImage} 
+                 iPoint={value.iPoint} 
                  time={value.time}  />
 
         <DeleteButton DeleteContent={DeleteContent} id={value.id} />

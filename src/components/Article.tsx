@@ -104,7 +104,7 @@ const Article=({state,dispatch})=>{
   reader.onload = () => {
     setImage(reader.result as string)
   }
-  console.log(image)
+  //console.log(image)
   }
 
   return (
