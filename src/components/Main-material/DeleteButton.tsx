@@ -11,10 +11,10 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-export default function DeleteButton() {
+export default function DeleteButton({DeleteContent,id}) {
     const classes = useStyles();
   
     return (
-        <Button variant="contained" className={classes.delete}>削除</Button>
+        <Button onClick={()=>DeleteContent(id)} variant="contained" className={classes.delete}>削除</Button>
     );
   }

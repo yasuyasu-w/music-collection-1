@@ -14,6 +14,7 @@ const reducers=(state=initialState,action)=>{
             id:action.id,
             ArtistName:action.ArtistName,
             SongName:action.SongName,
+            ArtistImage:action.ArtistImage,
             iPoint:action.iPoint,
             Desc:action.Desc,
             time:action.time}

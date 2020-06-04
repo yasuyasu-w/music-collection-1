@@ -4,7 +4,7 @@ import Content from './Main-material/Content'
 import DeleteButton from './Main-material/DeleteButton'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
-
+import {DELETE_INFO} from '../actions/actions'
 
 
 const useStyles = makeStyles(() =>
@@ -28,6 +28,13 @@ const Main=({state,dispatch})=>{
     const classes = useStyles();
     const history = useHistory();
 
+    const DeleteContent=(DelId)=>{
+      dispatch({
+        type:DELETE_INFO,
+        id:DelId
+      })
+    }
+
   const NewMakeContent=()=>{
     const newId=state.length
     history.push(`/article/${newId}`)
@@ -40,8 +47,8 @@ const Main=({state,dispatch})=>{
         {state.map((value,index)=>{return(
 
         <div key={index} className={classes.array}>
-        <Content ArtistName={value.ArtistName} time={value.time} />
-        <DeleteButton   />
+        <Content ArtistName={value.ArtistName} time={value.time} ArtistImage={value.ArtistImage} />
+        <DeleteButton DeleteContent={DeleteContent} id={value.id} />
         </div>
 
         )})}

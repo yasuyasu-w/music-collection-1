@@ -1,4 +1,4 @@
-import React,{ useState, useContext } from 'react';
+import React,{ useState } from 'react';
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import {ADD_CONTENT} from '../actions/actions'
 import {nowTime} from '../nowTime'
 import ArtistImage from './Article-material/ArtistImage'
-
 
 
 
@@ -37,9 +36,11 @@ const useStyles = makeStyles(() =>
   }),
 );
 
+
 const Article=({state,dispatch})=>{
   const classes = useStyles();
   const history = useHistory();
+  
 
   const [inputArtist, setInputArtist] = useState("")
   const [inputSong, setInputSong] = useState("")
@@ -52,10 +53,7 @@ const Article=({state,dispatch})=>{
 
   //新たにコンテントを追加
   const AddNewContent=()=>{
-    setInputArtist('')
-    setInputSong('')
-    setInputItioshi('')
-    setInputDesc('')
+    
 
     const newId=state.length
 
@@ -64,10 +62,17 @@ const Article=({state,dispatch})=>{
       id:newId,
       ArtistName:inputArtist,
       SongName:inputSong,
+      ArtistImage:image,
       iPoint:inputItioshi,
       Desc:inputDesc,
       time:nowTime()
     })
+
+    setInputArtist('')
+    setInputSong('')
+    setImage('')
+    setInputItioshi('')
+    setInputDesc('')
 
     history.push('/')
 
@@ -83,30 +88,29 @@ const Article=({state,dispatch})=>{
 
   }
 
+ 
+
   const setArtistImage=e=>{
+   if (e.target.files === null) {
+    return
+  }
 
-    //一枚だけ表示する
-    const file=e.target.files[0]
-    //ファイルリーダー作成
-    const reader=new FileReader()
-
-    reader.onload=()=>{
-      //dataURLを表示
-      const dataURL=reader.result
-      setImage(dataURL)
-      
-    }
-    //ファイルをdata URLとして読み込む
-    reader.readAsArrayBuffer(file)
-    setImage(e.target.files[0])
-    console.log(image)
+  const file = e.target.files.item(0)
+  if (file === null) {
+    return
+  }
+  var reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onload = () => {
+    setImage(reader.result as string)
+  }
+  console.log(image)
   }
 
   return (
     <form className={classes.form} noValidate autoComplete="off">
 
       <div className={classes.imagePlace} >
-
       <div className={classes.ArtistSongPlace}>
       <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" 
       value={inputArtist} onChange={e=>setInputArtist(e.target.value)}/>
@@ -115,8 +119,7 @@ const Article=({state,dispatch})=>{
       value={inputSong}    onChange={e=>setInputSong(e.target.value)} />
       </div>
 
-      <ArtistImage image={image} setArtistImage={setArtistImage} />
-
+      <ArtistImage image={image} setArtistImage={setArtistImage}  />
       </div>
 
       <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント"

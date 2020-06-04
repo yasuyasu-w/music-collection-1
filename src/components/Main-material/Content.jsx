@@ -8,13 +8,14 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const Content=({ArtistName,time})=>{
+const Content=({ArtistName,time,ArtistImage})=>{
     return(
         <Grid container  spacing={2}>
             <Grid item xs={11}>
                 <Paper>
                     {ArtistName}<br/>
                     {time}
+                    {ArtistImage}
                 </Paper>
             </Grid>
         </Grid>
