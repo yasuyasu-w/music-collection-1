@@ -32,7 +32,7 @@ export default function ArtistImage({image,setImage}) {
     if (e.target.files === null) {
      return
    }
-   console.log(e.target.files)
+   console.log(e.target.files.item(0))
   
    const file = e.target.files.item(0)
    if (file === null) {
@@ -51,6 +51,7 @@ export default function ArtistImage({image,setImage}) {
   const ImageClick = e => {
     if (ref.current) {
       e.preventDefault();
+      setOpenDialog(false)
       ref.current.click()
     }
   }
@@ -78,7 +79,8 @@ export default function ArtistImage({image,setImage}) {
       <AlertDialog setImage={setImage}
                    openDialog={openDialog}
                    setOpenDialog={setOpenDialog}
-                   setArtistImage={setArtistImage} />
+                   setArtistImage={setArtistImage} 
+                   ImageClick={ImageClick}/>
 
 
       </>

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DeleteButton from './DeleteButton'
 import {DELETE_INFO} from '../../actions/actions'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -25,6 +26,7 @@ const useStyles = makeStyles(() =>
 
 const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
     const classes = useStyles();
+    const history = useHistory();
 
     //✖を押した時の処理
     const DeleteContent=(DelId)=>{
@@ -38,6 +40,10 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
       }else{
         return;
       }
+    }
+    //編集を押したときの処理
+    const EditContent=(selectID)=>{
+      history.push(`/article/${selectID}`)
     }
 
     return (
@@ -65,7 +71,7 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
             <div>
                 {time}
             </div>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={()=>EditContent(id)} >
               編集
             </Button>
           </CardActions>

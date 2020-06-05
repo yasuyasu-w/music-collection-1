@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const AlertDialog=({setImage,openDialog,setOpenDialog , setArtistImage})=> {
+const AlertDialog=({setImage,openDialog,setOpenDialog , setArtistImage,ImageClick})=> {
     const ref:any=useRef(null)
 
   //クリックしたらダイアログを閉じる
@@ -14,25 +14,26 @@ const AlertDialog=({setImage,openDialog,setOpenDialog , setArtistImage})=> {
     setOpenDialog(false)
   }
 
-  const DeleteImage=()=>{
+  //画像を削除する
+  const DeleteImage=(e)=>{
     setOpenDialog(false)
     setImage('')
   }
 
-   //アイコンをclickした時の処理
-   const ImageChangeClick = e => {
-    if (ref.current) {
-      e.preventDefault();
-      setOpenDialog(false)
-      ref.current.click()
-    }
-  }
+//   //アイコンをclickした時の処理
+//   const ImageChangeClick = e => {
+//    if (ref.current) {
+//      e.preventDefault();
+//      setOpenDialog(false)
+//      ref.current.click()
+//    }
+//  }
 
 
   return (
     <>
-    <input style={{display:'none'}} id='button-file' type="file" accept="image/*"
-             ref={ref} onChange={setArtistImage} />
+    {/*<input style={{display:'none'}} id='button-file' type="file" accept="image/*"
+             ref={ref} onChange={setArtistImage} />*/}
       <Dialog
         open={openDialog}
         onClose={handleDialogClose}
@@ -50,7 +51,7 @@ const AlertDialog=({setImage,openDialog,setOpenDialog , setArtistImage})=> {
           <Button onClick={DeleteImage} color="primary">
             削除
           </Button>
-          <Button onClick={ImageChangeClick} color="primary" autoFocus>
+          <Button onClick={ImageClick} color="primary" autoFocus>
             変更
           </Button>
         </DialogActions>
