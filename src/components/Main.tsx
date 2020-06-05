@@ -1,10 +1,9 @@
 import React from "react"
 import AddButton from './Main-material/AddButton'
 import Content from './Main-material/Content'
-import DeleteButton from './Main-material/DeleteButton'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
-import {DELETE_INFO} from '../actions/actions'
+
 
 
 const useStyles = makeStyles(() =>
@@ -14,13 +13,10 @@ const useStyles = makeStyles(() =>
         marginRight:'10vw',
         marginLeft: '10vw'
     },
-    array: {
-        display:'flex',
-        justifyContent:'space-between',
-        alignItems:'center',
-        marginBottom:'20px'
-       
-    },
+    adBtnPlace:{
+      display:'flex',
+      justifyContent:'flex-end'
+    }
   }),
 );
 
@@ -28,18 +24,7 @@ const Main=({state,dispatch})=>{
     const classes = useStyles();
     const history = useHistory();
 
-    const DeleteContent=(DelId)=>{
-      const result=window.confirm('本当に削除しますか')
-
-      if(result){
-        dispatch({
-          type:DELETE_INFO,
-          id:DelId
-        })
-      }else{
-        return;
-      }
-    }
+ 
 
   const NewMakeContent=()=>{
     const newId=state.length
@@ -52,21 +37,21 @@ const Main=({state,dispatch})=>{
 
         {state.map((value,index)=>{return(
 
-        <div key={index} className={classes.array}>
-
-        <Content id={value.id}
+        <div key={index} >
+        <Content dispatch={dispatch}
+                 id={value.id}
                  ArtistName={value.ArtistName} 
                  SongName={value.SongName} 
                  ArtistImage={value.ArtistImage} 
                  iPoint={value.iPoint} 
                  time={value.time}  />
-
-        <DeleteButton DeleteContent={DeleteContent} id={value.id} />
         </div>
 
         )})}
 
+       <div className={classes.adBtnPlace}>
         <AddButton  NewMakeContent={NewMakeContent} />
+       </div>
         </div>
        
     )

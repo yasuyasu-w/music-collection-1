@@ -7,25 +7,50 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import DeleteButton from './DeleteButton'
+import {DELETE_INFO} from '../../actions/actions'
 
 const useStyles = makeStyles(() =>
   createStyles({
-      root:{
-        flexGrow: '0.8'
-      }
+    rootCard:{
+      marginBottom:'20vh'
+    },
+      media:{
+        height:'100px',
+        display:'flex',
+        justifyContent:'flex-end'
+      },
   }),
 );
 
-const Content=({id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
+const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
     const classes = useStyles();
 
+    //✖を押した時の処理
+    const DeleteContent=(DelId)=>{
+      const result=window.confirm('本当に削除しますか')
+
+      if(result){
+        dispatch({
+          type:DELETE_INFO,
+          id:DelId
+        })
+      }else{
+        return;
+      }
+    }
+
     return (
-        <Card className={classes.root} >
+        <Card className={classes.rootCard} >
           <CardActionArea>
             <CardMedia
+              className={classes.media}
               image={ArtistImage}
               title="Contemplative Reptile"
-            />
+            >
+              <DeleteButton DeleteContent={DeleteContent} id={id} />
+            </CardMedia>
+
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {iPoint}

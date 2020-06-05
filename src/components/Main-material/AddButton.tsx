@@ -8,12 +8,13 @@ import { createStyles, makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(() =>
   createStyles({
     addIcon:{
-      position: 'absolute',
-      right: '10vw',
+     // position: 'absolute',
+     // right: '10vw',
       backgroundColor:'black',
       color:'#E84E72',
       fontSize: '40px',
-      marginTop:'50px'
+      marginTop:'10vh',
+      marginBottom:'10vh'
       
     }
   })
