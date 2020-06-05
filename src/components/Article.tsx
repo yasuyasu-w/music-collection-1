@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import { makeStyles, createStyles} from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+//import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import AddButton from './Article-material/AddButton'
 import BackButton from './Article-material/BackButton'
@@ -47,6 +47,7 @@ const Article=({state,dispatch})=>{
   const [inputItioshi, setInputItioshi] = useState("")
   const [inputDesc, setInputDesc] = useState("")
 
+
   //ファイル読み込み時の型エラーが起きたため
   type StateType=string | ArrayBuffer | null
   const [image,setImage]=useState<StateType>('')
@@ -89,23 +90,7 @@ const Article=({state,dispatch})=>{
   }
 
  
-
-  const setArtistImage=e=>{
-   if (e.target.files === null) {
-    return
-  }
-
-  const file = e.target.files.item(0)
-  if (file === null) {
-    return
-  }
-  var reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => {
-    setImage(reader.result as string)
-  }
-  //console.log(image)
-  }
+ 
 
   return (
     <form className={classes.form} noValidate autoComplete="off">
@@ -119,8 +104,9 @@ const Article=({state,dispatch})=>{
       value={inputSong}    onChange={e=>setInputSong(e.target.value)} />
       </div>
 
-      <ArtistImage image={image} setArtistImage={setArtistImage}  />
+      <ArtistImage image={image} setImage={setImage}   />
       </div>
+      
 
       <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント"
       value={inputItioshi} onChange={e=>setInputItioshi(e.target.value)} />
