@@ -1,11 +1,12 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
+import {useParams} from 'react-router-dom'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 //import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import AddButton from './Article-material/AddButton'
 import BackButton from './Article-material/BackButton'
 import { useHistory } from "react-router-dom";
-import {ADD_CONTENT} from '../actions/actions'
+import {ADD_CONTENT,DELETE_INFO} from '../actions/actions'
 import {nowTime} from '../nowTime'
 import ArtistImage from './Article-material/ArtistImage'
 
@@ -40,21 +41,45 @@ const useStyles = makeStyles(() =>
 const Article=({state,dispatch})=>{
   const classes = useStyles();
   const history = useHistory();
+
+   const { id } = useParams()
+   //編集ボタンの押されたcontentのidをURLのpathを伝って受け取り、
+   //stateとマッチするものを残す(useParamでidは文字列で受け取るため、
+   //parseIntで数値に変換)
+   
+
+  
+    const [inputArtist, setInputArtist] =  useState('')
+    const [inputSong, setInputSong] =  useState('')
+    const [inputItioshi, setInputItioshi] =  useState('')
+    const [inputDesc, setInputDesc] =  useState('')
+
+    //ファイル読み込み時の型エラーが起きたため、型定義
+    type StateType=string | ArrayBuffer | null
+    const [image,setImage]= useState<StateType>('')
+    
+    
+    useEffect(()=>{
+      const matchState=state.find(state=>state.id===parseInt(id))
+      setInputArtist(matchState.ArtistName)
+      setInputSong(matchState.SongName)
+      setInputItioshi(matchState.iPoint)
+      setInputDesc(matchState.Desc)
+      setImage(matchState.ArtistImage)
+    },[id])
+
   
 
-  const [inputArtist, setInputArtist] = useState("")
-  const [inputSong, setInputSong] = useState("")
-  const [inputItioshi, setInputItioshi] = useState("")
-  const [inputDesc, setInputDesc] = useState("")
-
-
-  //ファイル読み込み時の型エラーが起きたため
-  type StateType=string | ArrayBuffer | null
-  const [image,setImage]=useState<StateType>('')
-
   //新たにコンテントを追加
-  const AddNewContent=()=>{
-    
+  const AddNewContent= async(e)=>{
+    e.preventDefault()
+
+    if(parseInt(id)!==0){
+       await dispatch({
+        type:DELETE_INFO,
+        id:parseInt(id)
+      })
+    }
 
     const newId=state.length
 
@@ -124,6 +149,6 @@ const Article=({state,dispatch})=>{
 
    
   );
-}
+  }
 
 export default Article

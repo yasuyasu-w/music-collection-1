@@ -72,7 +72,7 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
                 {time}
             </div>
             <Button size="small" color="primary" onClick={()=>EditContent(id)} >
-              編集
+              {id===0 ? '編集できません':'編集する'}
             </Button>
           </CardActions>
         </Card>

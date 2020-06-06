@@ -27,8 +27,8 @@ const Main=({state,dispatch})=>{
  
 
   const NewMakeContent=()=>{
-    const newId=state.length
-    history.push(`/article/${newId}`)
+    //const newId=state.length
+    history.push(`/article/${0}`)
   }
     
 

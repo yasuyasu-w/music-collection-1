@@ -1,14 +1,9 @@
-import {NEW_CONTENT,
-        ADD_CONTENT,
+import {ADD_CONTENT,
         DELETE_INFO} from '../actions/actions'
 import {initialState} from '../initiasState'
 
 const reducers=(state=initialState,action)=>{
-    switch (action.type){
-   //     case NEW_CONTENT:
-   //         const newID={id:action.id}
-   //         return [newID,...state]
-         
+    switch (action.type){       
         case ADD_CONTENT:
             const content={
             id:action.id,
