@@ -66,42 +66,50 @@ const Article=({state,dispatch})=>{
       setInputItioshi(matchState.iPoint)
       setInputDesc(matchState.Desc)
       setImage(matchState.ArtistImage)
-    },[id])
+
+      return () =>{
+      setInputArtist('')
+      setInputSong('')
+      setInputItioshi('')
+      setInputDesc('')
+      setImage('')
+      }
+    },[])
 
   
 
   //新たにコンテントを追加
-  const AddNewContent= async(e)=>{
+  const AddNewContent= (e)=>{
     e.preventDefault()
 
     if(parseInt(id)!==0){
-       await dispatch({
-        type:DELETE_INFO,
-        id:parseInt(id)
+        dispatch({
+       type:DELETE_INFO,
+       id:parseInt(id)
+     })
+   }
+
+
+     const newId=state.length
+     
+     dispatch({
+       type:ADD_CONTENT,
+       id:newId,
+       ArtistName:inputArtist,
+       SongName:inputSong,
+       ArtistImage:image,
+       iPoint:inputItioshi,
+       Desc:inputDesc,
+       time:nowTime()
       })
-    }
-
-    const newId=state.length
-
-    dispatch({
-      type:ADD_CONTENT,
-      id:newId,
-      ArtistName:inputArtist,
-      SongName:inputSong,
-      ArtistImage:image,
-      iPoint:inputItioshi,
-      Desc:inputDesc,
-      time:nowTime()
-    })
-
-    setInputArtist('')
-    setInputSong('')
-    setImage('')
-    setInputItioshi('')
-    setInputDesc('')
-
-    history.push('/')
-
+      
+      //  setInputArtist('')
+      //  setInputSong('')
+      //  setImage('')
+      //  setInputItioshi('')
+      //  setInputDesc('')
+      
+      history.push('/')
   }
 
   //戻るボタンを押したときMain.tsxへ戻る
