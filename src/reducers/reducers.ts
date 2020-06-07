@@ -1,5 +1,6 @@
 import {ADD_CONTENT,
-        DELETE_INFO} from '../actions/actions'
+        DELETE_INFO,
+        SORT_BY_TIME} from '../actions/actions'
 import {initialState} from '../initiasState'
 
 const reducers=(state=initialState,action)=>{
@@ -17,7 +18,20 @@ const reducers=(state=initialState,action)=>{
         
         case DELETE_INFO:
            const deleteState=state.filter(value=>value.id!==action.id)
-           return deleteState
+           const ReIdState= deleteState.map((value,index)=>{
+            value.id=(deleteState.length-1)-index
+             return value
+         })
+           return ReIdState
+        
+        case SORT_BY_TIME:
+            const sortTimeState=[...state].sort((a,b)=>a.time<b.time ? 1:-1)
+            const newIdState= sortTimeState.map((value,index)=>{
+               value.id=(sortTimeState.length-1)-index
+                return value
+            })
+            return newIdState
+
     }
 }
 

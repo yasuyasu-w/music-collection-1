@@ -1,3 +1,3 @@
-export const NEW_CONTENT='NEW_CONTENT'
 export const ADD_CONTENT='ADD_CONTENT'
 export const DELETE_INFO='DELETE_INFO'
+export const SORT_BY_TIME='SORT_BY_TIME'

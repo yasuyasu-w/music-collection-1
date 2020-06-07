@@ -1,8 +1,9 @@
-import React from "react"
+import React,{useEffect} from "react"
 import AddButton from './Main-material/AddButton'
 import Content from './Main-material/Content'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
+import {SORT_BY_TIME} from '../actions/actions'
 
 
 
@@ -24,8 +25,13 @@ const Main=({state,dispatch})=>{
     const classes = useStyles();
     const history = useHistory();
 
- 
+ useEffect(()=>{
+   dispatch({
+     type:SORT_BY_TIME
+   })
+ },[])
 
+ //articleのページに移動
   const NewMakeContent=()=>{
     //const newId=state.length
     history.push(`/article/${0}`)
