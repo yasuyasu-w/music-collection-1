@@ -8,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DeleteButton from './DeleteButton'
-import {DELETE_INFO} from '../../actions/actions'
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() =>
@@ -17,7 +16,7 @@ const useStyles = makeStyles(() =>
       marginBottom:'20vh'
     },
       media:{
-        height:'100px',
+        height:'30vh',
         display:'flex',
         justifyContent:'flex-end'
       },
