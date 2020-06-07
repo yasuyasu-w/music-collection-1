@@ -30,11 +30,11 @@ const Article=({state,dispatch})=>{
   const classes = useStyles();
   const history = useHistory();
 
-   const { id } = useParams()
-   //編集ボタンの押されたcontentのidをURLのpathを伝って受け取り、
-   //stateとマッチするものを残す(useParamでidは文字列で受け取るため、
-   //parseIntで数値に変換)
-   
+  //編集ボタンの押されたcontentのidをURLのpathを伝って受け取り、
+  //stateとマッチするものを残す(useParamでidは文字列で受け取るため、
+  //parseIntで数値に変換)
+  const { id } = useParams()
+  
     const [inputArtist, setInputArtist] =  useState('')
     const [inputSong, setInputSong] =  useState('')
     const [inputItioshi, setInputItioshi] =  useState('')
@@ -47,11 +47,19 @@ const Article=({state,dispatch})=>{
     
     useEffect(()=>{
       const matchState=state.find(state=>state.id===parseInt(id))
-      setInputArtist(matchState.ArtistName)
-      setInputSong(matchState.SongName)
-      setInputItioshi(matchState.iPoint)
-      setInputDesc(matchState.Desc)
-      setImage(matchState.ArtistImage)
+      if(matchState.id!==0){
+        setInputArtist(matchState.ArtistName)
+        setInputSong(matchState.SongName)
+        setInputItioshi(matchState.iPoint)
+        setInputDesc(matchState.Desc)
+        setImage(matchState.ArtistImage)
+      } else{
+        setInputArtist('')
+        setInputSong('')
+        setInputItioshi('')
+        setInputDesc('')
+        setImage('')
+      }
 
       return () =>{
       setInputArtist('')
@@ -76,6 +84,7 @@ const Article=({state,dispatch})=>{
    }
 
 
+     //このIdはあまり意味がなく、便宜上のもの(Main.tsxのuseEffectで新たなidが振りあてられるため)
      const newId=state.length
      
      dispatch({
@@ -99,11 +108,7 @@ const Article=({state,dispatch})=>{
     setInputItioshi('')
     setInputDesc('')
     history.goBack()
-
   }
-
- 
- 
 
   return (
     <form className={classes.form} noValidate autoComplete="off">

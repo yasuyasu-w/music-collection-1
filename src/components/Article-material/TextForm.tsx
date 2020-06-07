@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
+import {useParams} from 'react-router-dom'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import ArtistImage from './ArtistImage'
@@ -20,17 +21,13 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const TextForm=({inputArtist,
-                 setInputArtist,
-                 inputSong,
-                 setInputSong,
-                 image,
-                 setImage,
-                 inputItioshi,
-                 setInputItioshi,
-                 inputDesc,
-                 setInputDesc})=>{
-    const classes = useStyles();
+const TextForm=({inputArtist,setInputArtist,
+                 inputSong,setInputSong,
+                 image,setImage,
+                 inputItioshi,setInputItioshi,
+                 inputDesc,setInputDesc})=>{
+    const classes = useStyles()
+   // const { id } = useParams()
     return(
       <>
       <div className={classes.imagePlace} >
