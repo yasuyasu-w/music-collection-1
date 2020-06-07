@@ -1,14 +1,13 @@
 import React,{ useState,useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import { makeStyles, createStyles} from '@material-ui/core/styles';
-//import Avatar from '@material-ui/core/Avatar';
-import TextField from '@material-ui/core/TextField';
+import TextForm from './Article-material/TextForm'
 import AddButton from './Article-material/AddButton'
 import BackButton from './Article-material/BackButton'
 import { useHistory } from "react-router-dom";
 import {ADD_CONTENT,DELETE_INFO} from '../actions/actions'
 import {nowTime} from '../nowTime'
-import ArtistImage from './Article-material/ArtistImage'
+
 
 
 
@@ -18,17 +17,6 @@ const useStyles = makeStyles(() =>
       marginTop:'5%',
       marginLeft:'20%',
       marginRight:'20%'
-    },
-    imagePlace:{
-      display:'flex',
-      justifyContent:'space-between',
-      alignItems:'center',
-    },
-    ArtistSongPlace:{
-      marginRight:'5%'
-    },
-    textField:{
-      marginBottom:'10%',
     },
     ButtonPlace:{
       display:'flex',
@@ -47,8 +35,6 @@ const Article=({state,dispatch})=>{
    //stateとマッチするものを残す(useParamでidは文字列で受け取るため、
    //parseIntで数値に変換)
    
-
-  
     const [inputArtist, setInputArtist] =  useState('')
     const [inputSong, setInputSong] =  useState('')
     const [inputItioshi, setInputItioshi] =  useState('')
@@ -103,12 +89,6 @@ const Article=({state,dispatch})=>{
        time:nowTime()
       })
       
-      //  setInputArtist('')
-      //  setInputSong('')
-      //  setImage('')
-      //  setInputItioshi('')
-      //  setInputDesc('')
-      
       history.push('/')
   }
 
@@ -128,24 +108,11 @@ const Article=({state,dispatch})=>{
   return (
     <form className={classes.form} noValidate autoComplete="off">
 
-      <div className={classes.imagePlace} >
-      <div className={classes.ArtistSongPlace}>
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="アーティスト名" 
-      value={inputArtist} onChange={e=>setInputArtist(e.target.value)}/>
-
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="曲名" 
-      value={inputSong}    onChange={e=>setInputSong(e.target.value)} />
-      </div>
-
-      <ArtistImage image={image} setImage={setImage}   />
-      </div>
-      
-
-      <TextField className={classes.textField} id="standard-basic" fullWidth label="イチオシポイント"
-      value={inputItioshi} onChange={e=>setInputItioshi(e.target.value)} />
-
-      <TextField className={classes.textField} id="outlined-basic" fullWidth label="説明"  variant="outlined" 
-      value={inputDesc}    onChange={e=>setInputDesc(e.target.value)} />
+      <TextForm inputArtist={inputArtist} setInputArtist={setInputArtist}
+                inputSong={inputSong} setInputSong={setInputSong}
+                image={image} setImage={setImage}
+                inputItioshi={inputItioshi} setInputItioshi={setInputItioshi}
+                inputDesc={inputDesc} setInputDesc={setInputDesc} />
 
       <div className={classes.ButtonPlace}>
         <BackButton GoBack={GoBack} />
