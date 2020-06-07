@@ -41,8 +41,8 @@ const Main=({state,dispatch})=>{
     return(
         <div className={classes.root}>
 
-        {state.map((value,index)=>{return(
-
+        {state.map((value,index)=>{
+        return(
         <div key={index} >
         <Content dispatch={dispatch}
                  id={value.id}
