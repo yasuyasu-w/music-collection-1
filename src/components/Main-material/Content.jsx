@@ -28,22 +28,14 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
     const classes = useStyles();
     const history = useHistory();
 
-    //✖を押した時の処理
-    const DeleteContent=(DelId)=>{
-      const result=window.confirm('本当に削除しますか')
-
-      if(result){
-        dispatch({
-          type:DELETE_INFO,
-          id:DelId
-        })
+    
+    //編集を押したときの処理
+    const EditContent=(selectID)=>{
+     if(selectID!==0) {
+       history.push(`/article/${selectID}`)
       }else{
         return;
       }
-    }
-    //編集を押したときの処理
-    const EditContent=(selectID)=>{
-      history.push(`/article/${selectID}`)
     }
 
     return (
@@ -54,7 +46,10 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
               image={ArtistImage}
               title="Contemplative Reptile"
             >
-              <DeleteButton DeleteContent={DeleteContent} id={id} />
+              {
+                id!==0 ? <DeleteButton id={id} dispatch={dispatch} />
+                       :''
+              }
             </CardMedia>
 
             <CardContent>
