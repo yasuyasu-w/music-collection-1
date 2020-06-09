@@ -50,6 +50,7 @@ const Main=({state,dispatch})=>{
                  SongName={value.SongName} 
                  ArtistImage={value.ArtistImage} 
                  iPoint={value.iPoint} 
+                 Desc={value.Desc}
                  time={value.time}  />
         </div>
 
