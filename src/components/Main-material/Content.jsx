@@ -7,19 +7,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import DeleteButton from './DeleteButton'
 import { useHistory } from "react-router-dom";
+import ActionAria from './Content-material/ActionAria'
 
 const useStyles = makeStyles(() =>
   createStyles({
     rootCard:{
       marginBottom:'20vh'
-    },
-      media:{
-        height:'30vh',
-        display:'flex',
-        justifyContent:'flex-end'
-      },
+    }
   }),
 );
 
@@ -39,28 +34,13 @@ const Content=({dispatch,id,ArtistName,SongName,ArtistImage,iPoint,time})=>{
 
     return (
         <Card className={classes.rootCard} >
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={ArtistImage}
-              title="Contemplative Reptile"
-            >
-              {
-                id!==0 ? <DeleteButton id={id} dispatch={dispatch} />
-                       :''
-              }
-            </CardMedia>
 
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {iPoint}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-               アーテイスト名:{ArtistName} <br/>
-               曲名:{SongName}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <ActionAria dispatch={dispatch} id={id}
+                      ArtistName={ArtistName}
+                      SongName={SongName} 
+                      ArtistImage={ArtistImage}
+                      iPoint={iPoint} />
+
           <CardActions>
             <div>
                 {time}
